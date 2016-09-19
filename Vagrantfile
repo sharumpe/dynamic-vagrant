@@ -1,11 +1,20 @@
 Vagrant.configure("2") do |config|
+  unless File.exists?("vm_setup.rb")
+    abort("Please create vm_setup.rb similar to example_vm_setup.rb");
+  end
+
   # Get settings from here
-  load "./vm_setup.rb"
+  load "vm_setup.rb"
 
   # Defaults in case they're not set up elsewhere
   CENTOS_BOX ||= "boxcutter/centos72"
   ORACLE_BOX ||= "boxcutter/oraclelinux72"
   UBUNTU_BOX ||= "boxcutter/ubuntu1604"
+
+  # Defaults that everyone should get
+  CENTOS ||= []
+  ORACLE ||= []
+  UBUNTU ||= []
 
   CENTOS.each do |i|
     ## CentOS VMs
