@@ -1,12 +1,11 @@
 Vagrant.configure("2") do |config|
-  # CENTOS = ENV['vg_centos_list'].split(",")
-  # UBUNTU = ENV['vg_ubuntu_list'].split(",")
-
+  # Get settings from here
   load "./vm_setup.rb"
 
-  CENTOS_BOX ||= "wwueis/centos-7.2"
-  ORACLE_BOX ||= "wwueis/oraclelinux-7.2"
-  UBUNTU_BOX ||= "wwueis/ubuntu-16.04"
+  # Defaults in case they're not set up elsewhere
+  CENTOS_BOX ||= "boxcutter/centos72"
+  ORACLE_BOX ||= "boxcutter/oraclelinux72"
+  UBUNTU_BOX ||= "boxcutter/ubuntu1604"
 
   CENTOS.each do |i|
     ## CentOS VMs

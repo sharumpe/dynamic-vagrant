@@ -1,8 +1,7 @@
 # CentOS VMs
 CENTOS = [
   "bar1",
-  "foo2",
-  "steve"
+  "foo2"
 ]
 
 # Ubuntu VMs
@@ -15,6 +14,6 @@ ORACLE = [
 ]
 
 # Versions
-#CENTOS_BOX = 'wwueis/centos-7.2'
-#ORACLE_BOX = 'wwueis/oraclelinux-7.2'
-UBUNTU_BOX = 'wwueis/ubuntu-14.04'
+#CENTOS_BOX = "boxcutter/centos72"
+#ORACLE_BOX = "boxcutter/oraclelinux72"
+UBUNTU_BOX = "boxcutter/ubuntu1404"
