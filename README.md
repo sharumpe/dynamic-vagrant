@@ -11,12 +11,12 @@ write Puppet manifests targeted at them.  Other folks work in the same environme
 (cloning the same repo) so it was cumbersome/confusing to add new VM blocks to
 the Vagrantfile directly.
 
-This lets us keep vm_settings.rb local for each user, separate from the repo, so
+This lets us keep `vm_setup.rb` local for each user, separate from the repo, so
 each user can have independent sets of named Vagrant VM instances.
 
 ## Capabilities
 
-This is still early going.  Right now you can take these to actions in the vm_settings file:
+This is still early going.  Right now you can take these to actions in `vm_setup.rb`:
   * Add VMs by name  
 ```
 CENTOS = ["foo","bar"]
