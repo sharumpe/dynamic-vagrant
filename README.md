@@ -17,16 +17,23 @@ each user can have independent sets of named Vagrant VM instances.
 ## Capabilities
 
 This is still early going.  Right now you can take these to actions in `vm_setup.rb`:
-  * Add VMs by name  
-```
-CENTOS = ["foo","bar"]
-UBUNTU = ["fuu","bur"]
-```
-  * Override Box defaults  
+  * Set box name constants
 ```
 CENTOS_BOX = "yourboxname"
+```
+  * Add VMs by name  
+```
+VM_LIST ||= [
+  VM.new("centos",      CENTOS_BOX, true),
+  VM.new("oraclelinux", ORACLE_BOX, false),
+  VM.new("ubuntu",      UBUNTU_BOX, false)
+]
 ```
 
 ## Anything else?
 
+### Update 2016-09-26:
+I have refactored a lot of things so that the VM list is now an array of objects. As an example, I can now set the `gui` variable so that the box gets a gui or not, but it should be able to be extended to add whatever other information makes sense.
+
+### Original:
 If you'd like to contribute, it would be great to be able to add in some other custom config per-vm, for example adding a port forwarding config for "bar" only, or turning on the GUI for "fuu" only.  My Ruby-fu is not good at the moment, so I'm not sure how to inject that sort of thing on top of the dynamic creation of "bar" and "fuu".
