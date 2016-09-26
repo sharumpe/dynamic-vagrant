@@ -6,38 +6,26 @@ Vagrant.configure("2") do |config|
   # Get settings from here
   load "vm_setup.rb"
 
-  # Defaults in case they're not set up elsewhere
-  CENTOS_BOX ||= "boxcutter/centos72"
-  ORACLE_BOX ||= "boxcutter/oraclelinux72"
-  UBUNTU_BOX ||= "boxcutter/ubuntu1604"
-
-  # Defaults that everyone should get
-  CENTOS ||= []
-  ORACLE ||= []
-  UBUNTU ||= []
-
-  CENTOS.each do |i|
-    ## CentOS VMs
-    config.vm.define "#{i}" do |vmdef|
-      vmdef.vm.box = CENTOS_BOX
-      vmdef.vm.hostname = "#{i}"
+  ## CentOS VMs
+  VM_LIST.each do |vmobj|
+    config.vm.define "#{vmobj.name}" do |vmdef|
+      basic(vmdef, vmobj)
     end
   end
 
-  ORACLE.each do |i|
-    ## Ubuntu VMs
-    config.vm.define "#{i}" do |vmdef|
-      vmdef.vm.box = ORACLE_BOX
-      vmdef.vm.hostname = "#{i}"
-    end
-  end
+end
 
-  UBUNTU.each do |i|
-    ## Ubuntu VMs
-    config.vm.define "#{i}" do |vmdef|
-      vmdef.vm.box = UBUNTU_BOX
-      vmdef.vm.hostname = "#{i}"
-    end
+# Definitions
+def add_gui(ref)
+  ref.vm.provider "vmware_fusion" do |vmf|
+    vmf.gui = true
   end
+end
 
+def basic(ref, vmobj)
+  ref.vm.box = vmobj.box
+  ref.vm.hostname = vmobj.name
+  if vmobj.gui then
+    add_gui(ref)
+  end
 end
