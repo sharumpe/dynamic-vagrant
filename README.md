@@ -16,19 +16,23 @@ each user can have independent sets of named Vagrant VM instances.
 
 ## Capabilities
 
-This is still early going.  Right now you can take these to actions in `vm_setup.rb`:
-  * Set box name constants
+The setup is now in JSON, and does not require a Ruby object definition.
+So you can define your VMs as an array of (json) objects:
 ```
-CENTOS_BOX = "yourboxname"
-```
-  * Add VMs by name  
-```
-VM_LIST ||= [
-  VM.new("centos",      CENTOS_BOX, true),
-  VM.new("oraclelinux", ORACLE_BOX, false),
-  VM.new("ubuntu",      UBUNTU_BOX, false)
+[
+  {
+    "name": "centos",
+    "box": "boxcutter/centos72",
+    "gui": false,
+    "profile": "basic"
+  },
+  ...
 ]
 ```
+
+You may notice there are no longer constants for the box names; this is a trade-off,
+but probably worth it because JSON is much simpler format and makes for a more
+succint definition document.
 
 ## Anything else?
 
