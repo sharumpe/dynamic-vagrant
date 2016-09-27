@@ -11,10 +11,12 @@ write Puppet manifests targeted at them.  Other folks work in the same environme
 (cloning the same repo) so it was cumbersome/confusing to add new VM blocks to
 the Vagrantfile directly.
 
-This lets us keep `vm_setup.rb` local for each user, separate from the repo, so
+This lets us keep `vm_setup.json` local for each user, separate from the repo, so
 each user can have independent sets of named Vagrant VM instances.
 
 ## Capabilities
+
+### Dynamic VM setup
 
 The setup is now in JSON, and does not require a Ruby object definition.
 So you can define your VMs as an array of (json) objects:
@@ -30,9 +32,10 @@ So you can define your VMs as an array of (json) objects:
 ]
 ```
 
-You may notice there are no longer constants for the box names; this is a trade-off,
-but probably worth it because JSON is much simpler format and makes for a more
-succint definition document.
+### Profile declaration
+
+The profiles are defined in `vm_profiles.rb`.  This keeps `Vagrantfile` pretty
+much change-free, and makes for very flexible configurations.
 
 ## Anything else?
 
