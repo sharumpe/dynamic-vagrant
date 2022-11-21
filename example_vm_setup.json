@@ -1,30 +1,22 @@
-/*
-* Each object should look similar to this:
-* {
-*   "name": "centos",            // VM name
-*   "box": "boxcutter/centos72", // box name
-*   "gui": true,                 // use a gui?
-*   "profile": "basic"           // profile name defined in Vagrantfile
-* },
-*/
-
 [
   {
-    "name": "centos",
-    "box": "boxcutter/centos72",
+    "name": "rocky",
+    "box": "rockylinux/8",
     "gui": true,
     "profile": "basic"
   },
   {
-    "name": "oraclelinux",
-    "box": "boxcutter/oraclelinux72",
+    "name": "ubuntu",
+    "box": "ubuntu/focal64",
     "gui": false,
     "profile": "basic"
   },
   {
-    "name": "ubuntu",
-    "box": "boxcutter/ubuntu1604",
+    "name": "rockypuppet",
+    "box": "ubuntu/focal64",
     "gui": false,
-    "profile": "basic"
+    "profile": "puppet_client",
+    "pup_server": "yourpuppetserver.domain.com",
+    "pup_env": "production"
   }
 ]
